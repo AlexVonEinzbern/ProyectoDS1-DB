@@ -30,3 +30,40 @@ CREATE TABLE Factura(
 	fechaVenceFactura DATE
 );
 
+CREATE TABLE Medida(
+	idMedida SMALLSERIAL NOT NULL PRIMARY KEY,
+	idCliente REFERENCES Cliente,
+	idUsuario REFERENCES UsuariosOperador,
+	fechaMedida DATE,
+	medida DECIMAL
+);
+
+CREATE TABLE RegistroPago(
+	idPago SMALLSERIAL NOT NULL PRIMARY KEY,
+	idUsuario REFERENCES UsuariosOperador,
+	idFactura REF Factura,
+	pago DECIMAL,
+	fechaPago DATE
+);
+
+CREATE TABLE ConfigurarSistema(
+	idConfiguracion SMALLSERIAL NOT NULL PR KEY,
+	idUsuario REFERENCES UsuariosAdministrador,
+	fechaConfiguracion DATE,
+	interesMora DECIMAL,
+	reconexion DECIMAL,
+	unidadEnergia DECIMAL
+);
+
+CREATE TABLE DetalleFactura(
+	idDetalle SMALLSERIAL NO NU PRIMARY KEY,
+	idFactura REFERENCES Factura,
+	idMedida REFERENCES Medida,
+	idConfiguracion REFERENCES ConfigurarSistema
+);
+
+CREATE TABLE Activos(
+	idActivo INT NOT NULL PRIMARY KEY,
+	nombreActivo VARCHAR(50),
+	ubicacionActivo VARCHAR(50)
+);
