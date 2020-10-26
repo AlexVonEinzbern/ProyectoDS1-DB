@@ -9,12 +9,6 @@ CREATE TABLE Usuarios (
 	rolUsuario VARCHAR(20)
 );
 
-CREATE TABLE UsuariosAdministrador() INHERITS(Usuarios);
-
-CREATE TABLE UsuariosGerente() INHERITS(Usuarios);
-
-CREATE TABLE UsuariosOperador() INHERITS(Usuarios);
-
 CREATE TABLE Cliente(
 	idCliente SMALLSERIAL NOT NULL PRIMARY KEY,
 	nombreCliente VARCHAR(50) NOT NULL,
@@ -30,17 +24,23 @@ CREATE TABLE Factura(
 	fechaVenceFactura DATE
 );
 
+CREATE TABLE Activos(
+	idActivo INT NOT NULL PRIMARY KEY,
+	nombreActivo VARCHAR(50),
+	ubicacionActivo VARCHAR(50)
+);
+
 CREATE TABLE Medida(
 	idMedida SMALLSERIAL NOT NULL PRIMARY KEY,
 	idCliente SMALLSERIAL REFERENCES Cliente,
-	idUsuario SMALLSERIAL REFERENCES UsuariosOperador,
+	idUsuario SMALLSERIAL REFERENCES Usuarios,
 	fechaMedida DATE,
 	medida DECIMAL
 );
 
 CREATE TABLE RegistroPago(
 	idPago SMALLSERIAL NOT NULL PRIMARY KEY,
-	idUsuario SMALLSERIAL REFERENCES UsuariosOperador,
+	idUsuario SMALLSERIAL REFERENCES Usuarios,
 	idFactura SMALLSERIAL REFERENCES Factura,
 	pago DECIMAL,
 	fechaPago DATE
@@ -48,7 +48,7 @@ CREATE TABLE RegistroPago(
 
 CREATE TABLE ConfigurarSistema(
 	idConfiguracion SMALLSERIAL NOT NULL PRIMARY KEY,
-	idUsuario SMALLSERIAL REFERENCES UsuariosAdministrador,
+	idUsuario SMALLSERIAL REFERENCES Usuarios,
 	fechaConfiguracion DATE,
 	interesMora DECIMAL,
 	reconexion DECIMAL,
@@ -60,10 +60,4 @@ CREATE TABLE DetalleFactura(
 	idFactura SMALLSERIAL REFERENCES Factura,
 	idMedida SMALLSERIAL REFERENCES Medida,
 	idConfiguracion SMALLSERIAL REFERENCES ConfigurarSistema
-);
-
-CREATE TABLE Activos(
-	idActivo INT NOT NULL PRIMARY KEY,
-	nombreActivo VARCHAR(50),
-	ubicacionActivo VARCHAR(50)
 );
