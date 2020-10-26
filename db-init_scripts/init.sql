@@ -26,29 +26,29 @@ CREATE TABLE Cliente(
 
 CREATE TABLE Factura(
 	idFactura SMALLSERIAL NOT NULL PRIMARY KEY,
-	idCliente REFERENCES Cliente,
+	idCliente SMALLSERIAL REFERENCES Cliente,
 	fechaVenceFactura DATE
 );
 
 CREATE TABLE Medida(
 	idMedida SMALLSERIAL NOT NULL PRIMARY KEY,
-	idCliente REFERENCES Cliente,
-	idUsuario REFERENCES UsuariosOperador,
+	idCliente SMALLSERIAL REFERENCES Cliente,
+	idUsuario SMALLSERIAL REFERENCES UsuariosOperador,
 	fechaMedida DATE,
 	medida DECIMAL
 );
 
 CREATE TABLE RegistroPago(
 	idPago SMALLSERIAL NOT NULL PRIMARY KEY,
-	idUsuario REFERENCES UsuariosOperador,
-	idFactura REFERENCES Factura,
+	idUsuario SMALLSERIAL REFERENCES UsuariosOperador,
+	idFactura SMALLSERIAL REFERENCES Factura,
 	pago DECIMAL,
 	fechaPago DATE
 );
 
 CREATE TABLE ConfigurarSistema(
 	idConfiguracion SMALLSERIAL NOT NULL PRIMARY KEY,
-	idUsuario REFERENCES UsuariosAdministrador,
+	idUsuario SMALLSERIAL REFERENCES UsuariosAdministrador,
 	fechaConfiguracion DATE,
 	interesMora DECIMAL,
 	reconexion DECIMAL,
@@ -57,9 +57,9 @@ CREATE TABLE ConfigurarSistema(
 
 CREATE TABLE DetalleFactura(
 	idDetalle SMALLSERIAL NOT NULL PRIMARY KEY,
-	idFactura REFERENCES Factura,
-	idMedida REFERENCES Medida,
-	idConfiguracion REFERENCES ConfigurarSistema
+	idFactura SMALLSERIAL REFERENCES Factura,
+	idMedida SMALLSERIAL REFERENCES Medida,
+	idConfiguracion SMALLSERIAL REFERENCES ConfigurarSistema
 );
 
 CREATE TABLE Activos(
