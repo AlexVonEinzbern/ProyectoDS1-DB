@@ -1,3 +1,5 @@
+CREATE EXTENSION pgcrypto;
+
 CREATE TABLE Usuarios (
 	idUsuario SMALLSERIAL NOT NULL PRIMARY KEY,
 	nombreUsuario VARCHAR(50) NOT NULL,
@@ -6,7 +8,8 @@ CREATE TABLE Usuarios (
 	telefonoUsuario INT,
 	fechaIngresoUsuario DATE,
 	sucursalUsuario VARCHAR(50),
-	rolUsuario VARCHAR(20)
+	rolUsuario VARCHAR(20),
+	password text NOT NULL
 );
 
 CREATE TABLE Cliente(
