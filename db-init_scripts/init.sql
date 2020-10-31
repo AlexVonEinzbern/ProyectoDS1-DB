@@ -9,7 +9,8 @@ CREATE TABLE Usuarios (
 	fechaIngresoUsuario DATE,
 	sucursalUsuario VARCHAR(50),
 	rolUsuario VARCHAR(20),
-	estado BOOLEAN,
+	estadoUsuario BOOLEAN,
+	emailUsuario VARCHAR(50),
 	password TEXT NOT NULL
 );
 
