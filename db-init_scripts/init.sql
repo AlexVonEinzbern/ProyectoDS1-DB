@@ -20,7 +20,8 @@ CREATE TABLE Cliente(
 	cedulaCliente INT NOT NULL,
 	direccionCliente VARCHAR(50),
 	telefonoCLiente VARCHAR(50),
-	fechaAfiliacionCliente DATE
+	fechaAfiliacionCliente DATE,
+	estadoCliente BOOLEAN
 );
 
 CREATE TABLE Factura(
