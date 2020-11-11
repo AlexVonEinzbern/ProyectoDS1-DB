@@ -21,7 +21,8 @@ CREATE TABLE Cliente(
 	direccionCliente VARCHAR(50),
 	telefonoCLiente VARCHAR(50),
 	fechaAfiliacionCliente DATE,
-	estadoCliente BOOLEAN
+	estadoCliente BOOLEAN,
+	emailCliente VARCHAR(50)
 );
 
 CREATE TABLE Factura(
