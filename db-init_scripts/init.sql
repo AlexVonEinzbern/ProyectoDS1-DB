@@ -22,7 +22,7 @@ CREATE TABLE Cliente(
 	telefonoCLiente VARCHAR(50),
 	fechaAfiliacionCliente DATE,
 	estadoCliente BOOLEAN,
-	emailCliente VARCHAR(50)
+	emailCliente VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE Factura(
