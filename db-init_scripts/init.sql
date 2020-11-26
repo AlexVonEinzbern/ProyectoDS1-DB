@@ -28,7 +28,8 @@ CREATE TABLE Cliente(
 CREATE TABLE Factura(
 	idFactura SMALLSERIAL NOT NULL PRIMARY KEY,
 	idCliente SMALLSERIAL REFERENCES Cliente,
-	fechaVenceFactura DATE
+	fechaVenceFactura DATE,
+	estadoFactura Boolean default false
 );
 
 CREATE TABLE Activos(
@@ -68,6 +69,16 @@ CREATE TABLE DetalleFactura(
 	idMedida SMALLSERIAL REFERENCES Medida,
 	idConfiguracion SMALLSERIAL REFERENCES ConfigurarSistema
 );
+-- Trigger para llenar factura y detallefactura
+CREATE or replace  FUNCTION oninsertMedida() RETURNS TRIGGER AS $$
+BEGIN
+insert into DetalleFactura (idDetalle, idFactura, idMedida, idConfiguracion) values (new.idmedida,new.idmedida,new.idmedida,(select idConfiguracion from configurarsistema order by idconfiguracion desc limit 1))
+insert into Factura (idFactura, idCliente, fechaVenceFactura,estadoFactura) values (new.idmedida,new.idcliente,(current_date + ' 15 day'::interval),false)
+RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+create TRIGGER oninsertMedidaTGG after insert ON Medida FOR EACH ROW EXECUTE PROCEDURE oninsertMedida();
 
 
 /*Datos de la base de datos*/
