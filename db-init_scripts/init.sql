@@ -87,11 +87,11 @@ INSERT INTO cliente (nombreCliente, cedulaCliente, direccionCliente, telefonoCLi
 INSERT INTO cliente (nombreCliente, cedulaCliente, direccionCliente, telefonoCLiente, fechaAfiliacionCliente, estadoCliente, emailCliente) VALUES ('MARC TENDERO COLOMER', 16811212, 'Ap #368-9591 Metus St.', 9706173, '2019-08-05', true, 'MARC.TENDERO.COLOMER@gmail.com');
 
 /*Datos para la tabla Activos*/
-INSERT INTO activos (idActivo, nombreActivo, ubicacionActivo) VALUES (6189545532017, 'General Electric', '143-4859 Curae; St.');
-INSERT INTO activos (idActivo, nombreActivo, ubicacionActivo) VALUES (8603190664469, 'Siemens', '303-9523 Non, Rd.');
-INSERT INTO activos (idActivo, nombreActivo, ubicacionActivo) VALUES (2480137404144, 'General Electric', '2474 Sit Street');
-INSERT INTO activos (idActivo, nombreActivo, ubicacionActivo) VALUES (1990722859279, 'Siemens', '112-926 Porta Rd.');
-INSERT INTO activos (idActivo, nombreActivo, ubicacionActivo) VALUES (3461831326313, 'Mitsubishi Electric', 'P.O. Box 598, 2544 Nascetur St.');
+INSERT INTO activos (idActivo, nombreActivo, ubicacionActivo) VALUES (6189545, 'General Electric', '143-4859 Curae; St.');
+INSERT INTO activos (idActivo, nombreActivo, ubicacionActivo) VALUES (8603190, 'Siemens', '303-9523 Non, Rd.');
+INSERT INTO activos (idActivo, nombreActivo, ubicacionActivo) VALUES (2480137, 'General Electric', '2474 Sit Street');
+INSERT INTO activos (idActivo, nombreActivo, ubicacionActivo) VALUES (1990722, 'Siemens', '112-926 Porta Rd.');
+INSERT INTO activos (idActivo, nombreActivo, ubicacionActivo) VALUES (3461831, 'Mitsubishi Electric', 'P.O. Box 598, 2544 Nascetur St.');
 
 /*Datos para la tabla Medida*/
 INSERT INTO medida (idCliente, idUsuario, fechamedida, medida) VALUES (1, 1, '2020-10-29', 20.2);
